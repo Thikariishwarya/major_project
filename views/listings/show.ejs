@@ -5,12 +5,12 @@
 
 </script>
 <body>
-    <div class="row">
-        <div class="col-8 offset-3">
+    <div class="row box">
+        <div class="col-8 offset-3 box">
         <h3 class="mb-3 mt-3"> <b><%= Listing.title%></b></h3><br>
         </div>
-        <div class="col-6 offset-3">
-    <div class="card listing-card">
+        <div class="col-2 offset-3 box ">
+    <div class="card listing-card-image">
         <img src="<%= Listing.image.url%>" class="card-img-top show-img" alt="listing image">
         <div class="card-body">
             <p class="card-text">Owned By:<%= Listing.owner.username%></p>
@@ -23,7 +23,7 @@
     </div>
     </div>
     <% if(currUser && Listing.owner._id.equals(currUser._id)){ %>
-        <div class="btns mb-4">
+        <div class="btns mb-4 ">
             <a href="/listings/<%= Listing.id%>/edit" class= "btn btn-dark mb-3 col-1 offset-3 edit-btn"Edit>Edit</a>
         
             <form method="POST" action="/listings/<%= Listing._id%>?_method=DELETE ">
@@ -32,7 +32,7 @@
         </div>
    <% }%>
 
-<div class="col-6 offset-3">
+<div class="col-lg-6 col-sm-8 offset-3 box mt-4">
     <% if(currUser) {%>
         <hr>
     <h4>Leave a Review</h4>
@@ -64,26 +64,28 @@
 
 <% } %>
 <% if(Listing.reviews.length>0){%>
-    <div class ="row">
+    <div class ="row  box">
     <p><b>All Reviews</b></p>
     <% for(review of Listing.reviews){%>
-       <div class="card mb-3 ms-3 col-6">
+       <div class="card mb-3 ms-3 col-6 box">
         <div class="card-body">
         <h5 class="card-title">@<%= review.author.username%></h5>
         <p class="starability-result card-text" data-rating= <%= review.rating%>></p>
        <p class="card-text"><%= review.comment %> </p>
     </div>
+   <% if(currUser && review.author._id.equals(currUser._id)){%>
     <form class="mb-3" method="post" action="/listings/<%= Listing._id%>/reviews/<%= review._id%>?_method=DELETE">
         <button class="btn btn-sm btn-dark  mt-3" >Delete</button>
     </form>
+<%}%>
     </div>
    <% } %>
 </div>
 <% } %>
 </div>
-<div class="col-6 offset-3 mb-3">
+<div class="col-6 offset-3 mb-3 box">
     <h3>Where you'll be</h3>
-    <div id="map">
+    <div class="map " id="map">
     </div>
 </div>
 <script src="/javascript/map.js"></script>

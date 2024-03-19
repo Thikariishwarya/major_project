@@ -98,6 +98,7 @@ app.use("/listings/:id/reviews",reviewsRouter);
 //user router
 app.use("/",usersRouter);
 
+
 app.all("*",(req,res,next)=>{
 
     next(new ExpressError(404,"page not found"));
