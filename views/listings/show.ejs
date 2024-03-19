@@ -6,11 +6,11 @@
 </script>
 <body>
     <div class="row box">
-        <div class="col-8 offset-3 box">
+        <div class="col-8 offset-3">
         <h3 class="mb-3 mt-3"> <b><%= Listing.title%></b></h3><br>
         </div>
-        <div class="col-2 offset-3 box ">
-    <div class="card listing-card-image">
+        <div class="col-8 offset-3">
+    <div class="card listing-card box">
         <img src="<%= Listing.image.url%>" class="card-img-top show-img" alt="listing image">
         <div class="card-body">
             <p class="card-text">Owned By:<%= Listing.owner.username%></p>
@@ -23,8 +23,8 @@
     </div>
     </div>
     <% if(currUser && Listing.owner._id.equals(currUser._id)){ %>
-        <div class="btns mb-4 ">
-            <a href="/listings/<%= Listing.id%>/edit" class= "btn btn-dark mb-3 col-1 offset-3 edit-btn"Edit>Edit</a>
+        <div class="btns mb-4 box">
+            <a href="/listings/<%= Listing.id%>/edit" class= "btn btn-dark mb-3  offset-3 edit-btn"Edit>Edit</a>
         
             <form method="POST" action="/listings/<%= Listing._id%>?_method=DELETE ">
                 <button class= "btn btn-dark  offset-3 mb-3">Delete </button>
