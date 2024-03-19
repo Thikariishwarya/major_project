@@ -76,6 +76,9 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.get("/",(req,res,next)=>{
+    res.redirect("/listings");
+})
 
 app.use((req,res,next)=>{
     res.locals.success = req.flash("success");
@@ -107,10 +110,6 @@ app.use((err,req,res,next)=>{
     let {statuscode=500,message="something went wrong!"}=err;
     res.status(statuscode).render("error.ejs",{message});
 });
-
-
-
-
 
 
 app.listen(8080,()=>{
