@@ -32,7 +32,7 @@
         </div>
    <% }%>
 
-<div class="col-lg-6 col-sm-8 offset-3 box mt-4">
+<div class="col-lg-6 col-sm-8 offset-3 box-2 mt-4">
     <% if(currUser) {%>
         <hr>
     <h4>Leave a Review</h4>
@@ -64,14 +64,14 @@
 
 <% } %>
 <% if(Listing.reviews.length>0){%>
-    <div class ="row  box">
+    <div class ="row">
     <p><b>All Reviews</b></p>
     <% for(review of Listing.reviews){%>
-       <div class="card mb-3 ms-3 col-6 box">
+       <div class="card mb-3 ms-3 col-6 box-2">
         <div class="card-body">
-        <h5 class="card-title">@<%= review.author.username%></h5>
+        <h5 class="card-title box-2">@<%= review.author.username%></h5>
         <p class="starability-result card-text" data-rating= <%= review.rating%>></p>
-       <p class="card-text"><%= review.comment %> </p>
+       <p class="card-text box-2"><%= review.comment %> </p>
     </div>
    <% if(currUser && review.author._id.equals(currUser._id)){%>
     <form class="mb-3" method="post" action="/listings/<%= Listing._id%>/reviews/<%= review._id%>?_method=DELETE">
@@ -83,9 +83,9 @@
 </div>
 <% } %>
 </div>
-<div class="col-6 offset-3 mb-3 box">
+<div class="col-6 offset-3 mb-3 box-2">
     <h3>Where you'll be</h3>
-    <div class="map " id="map">
+    <div class="map" id="map">
     </div>
 </div>
 <script src="/javascript/map.js"></script>
